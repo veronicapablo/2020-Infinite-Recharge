@@ -10,14 +10,19 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 /* The import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX is never usedJava(268435844) */
 /*import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;*/
 
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.AnalogTrigger;
+/*
+The import edu.wpi.first.wpilibj.AnalogInput is never usedJava(268435844)
+The import edu.wpi.first.wpilibj.AnalogInput is never usedJava(268435844)
+ */
+/*import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.AnalogTrigger;*/
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.IntakeConstants;
+/* The import frc.robot.Constants.IntakeConstants is never usedJava(268435844) */
+/*import frc.robot.Constants.IntakeConstants;*/
 import frc.robot.Constants.RobotPorts;
 
 
