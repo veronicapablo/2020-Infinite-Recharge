@@ -9,8 +9,12 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
-import frc.robot.Constants.IntakeConstants;
-import frc.robot.Constants.ShooterConstants;
+/*
+The import frc.robot.Constants.IntakeConstants is never usedJava(268435844)
+The import frc.robot.Constants.IntakeConstants is never usedJava(268435844)
+ */
+/*import frc.robot.Constants.IntakeConstants;
+import frc.robot.Constants.ShooterConstants;*/
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 //import some sort of timer
