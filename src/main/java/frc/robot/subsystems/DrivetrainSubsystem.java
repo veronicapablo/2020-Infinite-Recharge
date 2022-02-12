@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
+/* Copyright (c) 2019-2022 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -66,7 +66,8 @@ public class DrivetrainSubsystem extends SubsystemBase {
   
   public void AutoDroive(double distance) {;
     //find absolute error
-    double error = Math.abs(distance - getAverageEncoderDistance());
+    /* The value of the local variable error is not usedJava(536870973) */
+    /*double error = Math.abs(distance - getAverageEncoderDistance());*/
     //if distance is positive and error is greater than 
     /*if(error > Constants.DriveConstants.kAutoDistanceError){      
       cougarDrive(1, -m_gyro.getAngle()*Constants.DriveConstants.kAutoTurnRatio);
