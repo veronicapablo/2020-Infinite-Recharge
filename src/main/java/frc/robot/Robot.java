@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2019 FIRST. All Rights Reserved.                        */
+/* Copyright (c) 2017-2019 - 2022 FIRST. All Rights Reserved.                        */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -8,11 +8,11 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+/*import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;*/
+/*import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;*/
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.commands.AutoAim;
+/*import frc.robot.commands.AutoAim;
 import frc.robot.commands.AutoDrive;
 import frc.robot.commands.AutoFarLeftShoot5;
 import frc.robot.commands.AutoMidShoot;
@@ -22,7 +22,7 @@ import frc.robot.commands.AutoTurn;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
-import frc.robot.subsystems.VisionSubsystem;
+import frc.robot.subsystems.VisionSubsystem;*/
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -47,7 +47,7 @@ public class Robot extends TimedRobot {
     
     //auto = new SendableChooser<>();
 
-    SendableChooser<String> auto = new SendableChooser<String>();
+    /*SendableChooser<String> auto = new SendableChooser<String>();*/
 
   
     //try with addOption
