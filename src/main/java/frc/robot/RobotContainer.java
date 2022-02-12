@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018-2019 FIRST. All Rights Reserved.                        */
+/* Copyright (c) 2018-2022 FIRST. All Rights Reserved.                        */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -8,38 +8,22 @@
 package frc.robot;
 
 import edu.wpi.cscore.HttpCamera;
-import edu.wpi.cscore.UsbCamera;
+
+/*The import edu.wpi.cscore.UsbCamera is never usedJava(268435844)*/
+/*import edu.wpi.cscore.UsbCamera;*/
 import edu.wpi.first.cameraserver.CameraServer;
 /*
-
 import com.qualcomm.hardware.rev.RevBlinkinLedDriver;
-
-
-
-
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-
-
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-
-
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
-
-
-
-
-
-
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-
-
 import org.firstinspires.ftc.robotcore.internal.system.Deadline;
-
 import java.util.concurrent.TimeUnit;
 */
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Sendable;
+/*The import edu.wpi.first.wpilibj.Sendable is never usedJava(268435844)*/
+/*import edu.wpi.first.wpilibj.Sendable;*/
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
@@ -52,7 +36,8 @@ import frc.robot.commands.AutoMidDefense;
 import frc.robot.commands.AutoMidShoot;
 import frc.robot.commands.AutoReverse;
 import frc.robot.commands.AutoShoot3Position;
-import frc.robot.commands.AutoTurn;
+/* The import frc.robot.commands.AutoTurn is never usedJava(268435844) */
+/*import frc.robot.commands.AutoTurn;*/
 import frc.robot.commands.DefaultDrive;
 import frc.robot.commands.GearShift;
 import frc.robot.commands.IntakeIn;
@@ -68,8 +53,12 @@ import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.VisionSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.CommandGroupBase;
-import edu.wpi.first.wpilibj2.command.RunCommand;
+/*
+The import edu.wpi.first.wpilibj2.command.CommandGroupBase is never usedJava(268435844)
+The import edu.wpi.first.wpilibj2.command.RunCommand is never usedJava(268435844)
+*/
+/*import edu.wpi.first.wpilibj2.command.CommandGroupBase;
+import edu.wpi.first.wpilibj2.command.RunCommand;*/
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
