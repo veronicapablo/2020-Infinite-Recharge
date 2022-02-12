@@ -62,10 +62,11 @@ import edu.wpi.first.wpilibj2.command.RunCommand;*/
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
- * This class is where the bulk of the robot should be declared.  Since Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
- * periodic methods (other than the scheduler calls).  Instead, the structure of the robot
- * (including subsystems, commands, and button mappings) should be declared here.
+ * This class is where the bulk of the robot should be declared. Since
+ * Command-based is a "declarative" paradigm, very little robot logic should
+ * actually be handled in the {@link Robot} periodic methods (other than the
+ * scheduler calls). Instead, the structure of the robot (including subsystems,
+ * commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
@@ -73,104 +74,95 @@ public class RobotContainer {
   private final VisionSubsystem m_VisionSubsystem = new VisionSubsystem();
   private final IntakeSubsystem m_IntakeSubsystem = new IntakeSubsystem();
   private final ShooterSubsystem m_ShooterSubsystem = new ShooterSubsystem();
-  private final ClimberSubsystem m_TheClimb= new ClimberSubsystem();
+  private final ClimberSubsystem m_TheClimb = new ClimberSubsystem();
   private final SendableChooser<Command> auto = new SendableChooser<Command>();
-  
 
   XboxController Controller1 = new XboxController(0);
   XboxController Controller2 = new XboxController(1);
 
   /**
-   * The container for the robot.  Contains subsystems, OI devices, and commands.
+   * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
 
-    //Add default commands here
-    m_DrivetrainSubsystem.setDefaultCommand(new DefaultDrive(() -> 
-             Controller1.getY(GenericHID.Hand.kLeft), () ->
-            -Controller1.getX(GenericHID.Hand.kRight), m_DrivetrainSubsystem));
-          
+    // Add default commands here
+    m_DrivetrainSubsystem.setDefaultCommand(new DefaultDrive(() -> Controller1.getY(GenericHID.Hand.kLeft),
+        () -> -Controller1.getX(GenericHID.Hand.kRight), m_DrivetrainSubsystem));
+
     // Configure the button bindings
     configureButtonBindings();
-    //private HttpCamera limelightFeed;
-    //limelightFeed = new HttpCamera("limelight", "http://limelight.local:5800/stream.mjpg");
-    //driverShuffleboardTab.add("LL", limelightFeed).withPosition(0, 0).withSize(15, 8).withProperties(Map.of("Show Crosshair", true, "Show Controls", false));
+    // private HttpCamera limelightFeed;
+    // limelightFeed = new HttpCamera("limelight",
+    // "http://limelight.local:5800/stream.mjpg");
+    // driverShuffleboardTab.add("LL", limelightFeed).withPosition(0,
+    // 0).withSize(15, 8).withProperties(Map.of("Show Crosshair", true, "Show
+    // Controls", false));
 
-    // httpCamera = new HttpCamera("CoprocessorCamera", "http://frcvision.local:1181/stream.mjpg");
-    //CameraServer.getInstance().addCamera(httpCamera);
-    //Shuffleboard.getTab("Driver").add(httpCamera);
+    // httpCamera = new HttpCamera("CoprocessorCamera",
+    // "http://frcvision.local:1181/stream.mjpg");
+    // CameraServer.getInstance().addCamera(httpCamera);
+    // Shuffleboard.getTab("Driver").add(httpCamera);
 
     HttpCamera httpCamera = new HttpCamera("CoprocessorCamera", "http://limelight.local:5800/stream.mjpg");
     CameraServer.getInstance().addCamera(httpCamera);
     Shuffleboard.getTab("Driver").add(httpCamera);
 
-    //Autonomous procedures
+    // Autonomous procedures
     auto.setDefaultOption("Reverse", new AutoReverse(m_DrivetrainSubsystem));
-    auto.addOption("FarLeftShoot 5 ", new AutoFarLeftShoot5(m_DrivetrainSubsystem, m_IntakeSubsystem, m_ShooterSubsystem, m_VisionSubsystem));
+    auto.addOption("FarLeftShoot 5 ",
+        new AutoFarLeftShoot5(m_DrivetrainSubsystem, m_IntakeSubsystem, m_ShooterSubsystem, m_VisionSubsystem));
     auto.addOption("Mid Shoot", new AutoMidShoot(m_DrivetrainSubsystem, m_ShooterSubsystem, m_IntakeSubsystem));
-    auto.addOption("Shoot 3 then position", new AutoShoot3Position(m_DrivetrainSubsystem, m_ShooterSubsystem, m_IntakeSubsystem));
+    auto.addOption("Shoot 3 then position",
+        new AutoShoot3Position(m_DrivetrainSubsystem, m_ShooterSubsystem, m_IntakeSubsystem));
     auto.addOption("Straight mid block shooters", new AutoMidDefense(m_DrivetrainSubsystem));
-    auto.addOption("AutoStraight",new AutoDrive(100, m_DrivetrainSubsystem));
+    auto.addOption("AutoStraight", new AutoDrive(100, m_DrivetrainSubsystem));
     SmartDashboard.putData("Auto Chooser", auto);
   }
 
   /**
-   * Use this method to define your button->command mappings.  Buttons can be created by
-   * instantiating a {@link GenericHID} or one of its subclasses ({@link
-   * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a
-   * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
+   * Use this method to define your button->command mappings. Buttons can be
+   * created by instantiating a {@link GenericHID} or one of its subclasses
+   * ({@link edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then
+   * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    //CONTROLLER 1
-    new JoystickButton (Controller1, Button.kA.value)
-      .whenPressed(() -> m_DrivetrainSubsystem.setMaxOutput(Constants.DriveConstants.kLowSpeedRatio))
-      .whenReleased(() -> m_DrivetrainSubsystem.setMaxOutput(Constants.DriveConstants.kHighSpeedRatio));
+    // CONTROLLER 1
+    new JoystickButton(Controller1, Button.kA.value)
+        .whenPressed(() -> m_DrivetrainSubsystem.setMaxOutput(Constants.DriveConstants.kLowSpeedRatio))
+        .whenReleased(() -> m_DrivetrainSubsystem.setMaxOutput(Constants.DriveConstants.kHighSpeedRatio));
 
-    //Drivetrain Commands
-    new JoystickButton (Controller1, Button.kBack.value)
-    .whenHeld(new GearShift(m_DrivetrainSubsystem));
-      
-    //Intake Commands (go out )
-    new JoystickButton (Controller1, Button.kBumperLeft.value)
-      .whenHeld(new IntakeIn(m_IntakeSubsystem));
-    
-    new JoystickButton(Controller1, Button.kBumperRight.value)
-      .whenHeld(new Sweeper(m_IntakeSubsystem));
-      
-   
-    //Shooter Command
-    new JoystickButton (Controller1, Button.kB.value)
-    .whenHeld(new Shoot_Pass(m_ShooterSubsystem,m_IntakeSubsystem));
+    // Drivetrain Commands
+    new JoystickButton(Controller1, Button.kBack.value).whenHeld(new GearShift(m_DrivetrainSubsystem));
 
-    //Climber Commands
-    new JoystickButton(Controller1, Button.kX.value)
-    .whenHeld(new RaiseElevator(m_TheClimb));
-    new JoystickButton(Controller1, Button.kY.value)
-    .whenHeld(new LowerElevator(m_TheClimb));
-    
-    //CONTROLLER 2
+    // Intake Commands (go out )
+    new JoystickButton(Controller1, Button.kBumperLeft.value).whenHeld(new IntakeIn(m_IntakeSubsystem));
 
-    //Shooter Commands (make one for pass and far shoot)
-    new JoystickButton (Controller2, Button.kY.value)
-    .whenHeld(new ShootBall(m_ShooterSubsystem,m_IntakeSubsystem));
+    new JoystickButton(Controller1, Button.kBumperRight.value).whenHeld(new Sweeper(m_IntakeSubsystem));
 
-    new JoystickButton (Controller2, Button.kX.value)
-    .whenHeld(new Shoot_far_17(m_ShooterSubsystem,m_IntakeSubsystem));
+    // Shooter Command
+    new JoystickButton(Controller1, Button.kB.value).whenHeld(new Shoot_Pass(m_ShooterSubsystem, m_IntakeSubsystem));
 
-    //Autoaim Commands
-    new JoystickButton(Controller2, Button.kA.value)
-    .whenHeld(new AutoAim(m_DrivetrainSubsystem,m_VisionSubsystem));
-     
-    //Conveyor Commands
-    new JoystickButton (Controller2, Button.kBumperLeft.value)
-    .whenPressed(() -> m_IntakeSubsystem.conveyorMotorOn(1))
-    .whenReleased(() -> m_IntakeSubsystem.conveyorMotorOff());
-            //Unjam Command
-     new JoystickButton (Controller2, Button.kBumperRight.value)
-     .whenPressed(() -> m_IntakeSubsystem.conveyorMotorOn(-1))
-     .whenReleased(() -> m_IntakeSubsystem.conveyorMotorOff());
+    // Climber Commands
+    new JoystickButton(Controller1, Button.kX.value).whenHeld(new RaiseElevator(m_TheClimb));
+    new JoystickButton(Controller1, Button.kY.value).whenHeld(new LowerElevator(m_TheClimb));
+
+    // CONTROLLER 2
+
+    // Shooter Commands (make one for pass and far shoot)
+    new JoystickButton(Controller2, Button.kY.value).whenHeld(new ShootBall(m_ShooterSubsystem, m_IntakeSubsystem));
+
+    new JoystickButton(Controller2, Button.kX.value).whenHeld(new Shoot_far_17(m_ShooterSubsystem, m_IntakeSubsystem));
+
+    // Autoaim Commands
+    new JoystickButton(Controller2, Button.kA.value).whenHeld(new AutoAim(m_DrivetrainSubsystem, m_VisionSubsystem));
+
+    // Conveyor Commands
+    new JoystickButton(Controller2, Button.kBumperLeft.value).whenPressed(() -> m_IntakeSubsystem.conveyorMotorOn(1))
+        .whenReleased(() -> m_IntakeSubsystem.conveyorMotorOff());
+    // Unjam Command
+    new JoystickButton(Controller2, Button.kBumperRight.value).whenPressed(() -> m_IntakeSubsystem.conveyorMotorOn(-1))
+        .whenReleased(() -> m_IntakeSubsystem.conveyorMotorOff());
   }
-
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
@@ -179,8 +171,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    
-   
+
     return auto.getSelected();
   }
 }
